@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Rock, paper, scissors game</title>
+        <link href="css/reset.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/main.css" rel="stylesheet" type="text/css" media="all"/>
+    </head>
+    <body>
+        <div class="row">
+            <h1>Welcome to RPS Game!!</h1>
+        </div>
+        <div class="row">
+            <div class="column left">
+                <h2 class="score center">Player</h2>
+                <input id="btn_rock" class="button" type="image" src="assets/rock.png" onclick="game('rock')">
+            </div>
+            <div class="column middle">
+                <h2 class="score center">Scoreboard</h2>
+                <h3 class="score center" id="score">0 - 0</h3>
+            </div>
+            <div class="column right">
+                <h2 class="score center">Computer</h2>
+                <img src="assets/rock.png" class="img reverse">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column left">
+                <input id="btn_paper" class="button" type="image" src="assets/paper.png" onclick="game('paper')">
+            </div>
+            <div class="column middle">
+                <div class="column left" id="myHand"></div>
+                <div class="column middle">
+                    <p class="center">¡Hi there!, thanks for playing. -Noriaki M.</p>
+                </div>
+                <div class="column right" id="comHand"></div>
+            </div>
+            <div class="column right">
+                <img src="assets/paper.png" class="img reverse ">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column left">
+                <input id="btn_scissors" class="button" type="image" src="assets/scissors.png" onclick="game('scissors')">
+            </div>
+            <div class="column middle">
+                <h4 class="score center" id="status"></h4>
+            </div>
+            <div class="column right">
+                <img src="assets/scissors.png" class="img reverse">
+            </div>
+        </div>
+            
+        <script>
+            function computerPlay() {
+                let hand = Math.floor(Math.random() * (3-0) + 0);
+                switch (hand) {
+                    case 0:
+                        return 'rock';
+                        break;
+                    case 1:
+                        return 'paper';
+                        break;
+                    case 2: 
+                        return 'scissors';
+                        break;
+                }
+            }
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection === computerSelection) {
+                    return "draw"
+                } else if (playerSelection == 'rock' && computerSelection == 'paper') {
+                    return "lose"
+                } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+                    return "lose"
+                } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+                    return "lose"
+                } else {
+                    return "win"
+                }
+            }
+            let p1_points = 0;
+            let com_points = 0;
+            function game(mySelection) {
+                const playerSelection = mySelection;
+                const computerSelection = computerPlay();
+                if (mySelection == 'rock') {
+                    document.getElementById('myHand').innerHTML = "<img src='assets/rock.png' class='column img'>";
+                } else if (mySelection == 'paper') {
+                    document.getElementById('myHand').innerHTML = "<img src='assets/paper.png' class='column img'>";
+                } else {
+                    document.getElementById('myHand').innerHTML = "<img src='assets/scissors.png' class='column img'>";
+                }
+                if (computerSelection == 'rock') {
+                    document.getElementById('comHand').innerHTML = "<img src='assets/rock.png' class='img reverse'>";
+                } else if (computerSelection == 'paper') {
+                    document.getElementById('comHand').innerHTML = "<img src='assets/paper.png' class='img reverse'>";
+                } else {
+                    document.getElementById('comHand').innerHTML = "<img src='assets/scissors.png' class='img reverse'>";
+                }
+                let round = playRound(playerSelection,computerSelection);
+                if (round == "win") {
+                    p1_points += 1;
+                    document.getElementById('status').innerHTML = "YOU WIN!";
+                } else if (round == "lose") {
+                    com_points += 1;
+                    document.getElementById('status').innerHTML = "YOU LOSE uwu";
+                } else {
+                    document.getElementById('status').innerHTML = "¡DRAW!";
+                }
+                document.getElementById('score').innerHTML = p1_points + ' - ' + com_points;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+/* CSS Style*/
+body {
+    background-color: #000000;
+}
+h1 {
+    color: rgb(253, 253, 253);
+    text-align: center;
+    font-size: 100px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+.button {
+    border: none;
+    padding: 6px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 100px;
+}
+.img {
+    border: none;
+    padding: 6px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: auto;    
+    transition-duration: 0.4s;
+    width: 100px;
+}
+.reverse {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.column {
+    float: left;
+    width: 100px;
+}
+.left {
+    width: 33%;
+}
+.middle {
+    width: 33%;
+}
+.right {
+    width: 33%;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.score {
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(252, 252, 252);
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+    width: 400px;
+    margin-top: 10px;
+}
